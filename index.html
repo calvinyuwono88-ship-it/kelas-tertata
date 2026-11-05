@@ -6,38 +6,30 @@
 <title>Kelas Tertata - Perencana Ruang Kelas Digital</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header class="site-head">
-  <div class="wrap">
+<div class="shell">
+<aside class="rail">
+  <div class="brand">
     <h1>Kelas Tertata</h1>
     <p>Perencana ruang kelas digital. Rencanakan, coba, nilai, dan terapkan susunan ruang kelas.</p>
   </div>
-</header>
+  <nav class="tabs no-print" aria-label="Menu utama">
+    <button class="active" data-tab="simulasi">Simulasi Denah</button>
+    <button data-tab="pilihan">Pilihan Susunan</button>
+    <button data-tab="audit">Audit Ruang Kelas</button>
+    <button data-tab="panduan">Petunjuk</button>
+  </nav>
+  <footer>Media simulasi penataan ruang kelas sekolah dasar</footer>
+</aside>
 
-<main class="wrap">
-<nav class="tabs no-print" aria-label="Menu utama">
-  <button class="active" data-tab="simulasi">Simulasi Denah</button>
-  <button data-tab="pilihan">Pilihan Susunan</button>
-  <button data-tab="audit">Audit Ruang Kelas</button>
-  <button data-tab="panduan">Petunjuk</button>
-</nav>
-
+<main>
 <section id="simulasi" class="panel active">
   <h2>Simulasi penataan ruang kelas</h2>
-  <p class="muted lead">Pilih perabot di panel kanan untuk menambahkannya. Seret perabot pada denah untuk mengubah posisi. Denah contoh berukuran 8 × 7 meter; sesuaikan dengan kondisi kelas sebenarnya.</p>
+  <p class="muted lead">Pilih perabot pada panel di atas denah untuk menambahkannya. Seret perabot pada denah untuk mengubah posisi. Denah contoh berukuran 8 × 7 meter; sesuaikan dengan kondisi kelas sebenarnya.</p>
   <div class="workspace">
-    <div>
-      <div class="room-wrap"><div class="room" id="room">
-        <div class="board">PAPAN TULIS</div><div class="window"></div><div class="door"></div>
-      </div></div>
-      <div class="controls no-print">
-        <button class="btn light" onclick="clearMovables()">Kosongkan perabot bergerak</button>
-        <button class="btn light" onclick="window.print()">Cetak denah</button>
-      </div>
-    </div>
     <aside class="side">
       <h3>Tambah perabot</h3>
       <div class="tool" onclick="addItem('Meja siswa','desk')"><span>▰</span> Meja siswa</div>
@@ -47,6 +39,15 @@
       <div class="tool danger" onclick="removeSelected()"><span>✕</span> Hapus pilihan</div>
       <p class="muted">Tip: pilih sebuah perabot, lalu seret ke posisi yang diinginkan. Gunakan tombol pilihan susunan untuk memulai dari contoh yang sudah disediakan.</p>
     </aside>
+    <div>
+      <div class="room-wrap"><div class="room" id="room">
+        <div class="board">PAPAN TULIS</div><div class="window"></div><div class="door"></div>
+      </div></div>
+      <div class="controls no-print">
+        <button class="btn light" onclick="clearMovables()">Kosongkan perabot bergerak</button>
+        <button class="btn light" onclick="window.print()">Cetak denah</button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -88,8 +89,7 @@
   <div class="note"><b>Catatan:</b> Denah digital ini merupakan prototipe simulasi. Ukuran perabot dan posisi fitur ruang bersifat ilustratif, sehingga perlu disesuaikan dengan hasil pengukuran kelas sebenarnya.</div>
 </section>
 </main>
-
-<footer>Kelas Tertata, media simulasi penataan ruang kelas sekolah dasar</footer>
-<script src="script.js"></script>
+</div>
+<script src="js/script.js"></script>
 </body>
 </html>
