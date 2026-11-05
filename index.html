@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kelas Tertata - Perencana Ruang Kelas Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <h1>Kelas Tertata</h1>
+    <p>Perencana ruang kelas digital. Rencanakan, coba, nilai, dan terapkan susunan ruang kelas.</p>
+  </div>
+</header>
+
+<main class="wrap">
+<nav class="tabs no-print" aria-label="Menu utama">
+  <button class="active" data-tab="simulasi">Simulasi Denah</button>
+  <button data-tab="pilihan">Pilihan Susunan</button>
+  <button data-tab="audit">Audit Ruang Kelas</button>
+  <button data-tab="panduan">Petunjuk</button>
+</nav>
+
+<section id="simulasi" class="panel active">
+  <h2>Simulasi penataan ruang kelas</h2>
+  <p class="muted lead">Pilih perabot di panel kanan untuk menambahkannya. Seret perabot pada denah untuk mengubah posisi. Denah contoh berukuran 8 × 7 meter; sesuaikan dengan kondisi kelas sebenarnya.</p>
+  <div class="workspace">
+    <div>
+      <div class="room-wrap"><div class="room" id="room">
+        <div class="board">PAPAN TULIS</div><div class="window"></div><div class="door"></div>
+      </div></div>
+      <div class="controls no-print">
+        <button class="btn light" onclick="clearMovables()">Kosongkan perabot bergerak</button>
+        <button class="btn light" onclick="window.print()">Cetak denah</button>
+      </div>
+    </div>
+    <aside class="side">
+      <h3>Tambah perabot</h3>
+      <div class="tool" onclick="addItem('Meja siswa','desk')"><span>▰</span> Meja siswa</div>
+      <div class="tool" onclick="addItem('Meja guru','teacher')"><span>▱</span> Meja guru</div>
+      <div class="tool" onclick="addItem('Lemari','cabinet')"><span>▤</span> Lemari</div>
+      <div class="tool" onclick="addItem('Rak','shelf')"><span>▥</span> Rak</div>
+      <div class="tool danger" onclick="removeSelected()"><span>✕</span> Hapus pilihan</div>
+      <p class="muted">Tip: pilih sebuah perabot, lalu seret ke posisi yang diinginkan. Gunakan tombol pilihan susunan untuk memulai dari contoh yang sudah disediakan.</p>
+    </aside>
+  </div>
+</section>
+
+<section id="pilihan" class="panel">
+  <h2>Pilihan susunan tempat duduk</h2>
+  <p class="muted lead">Tidak ada satu susunan yang selalu paling baik. Pilih sesuai tujuan kegiatan dan kebutuhan peserta didik.</p>
+  <div class="layout-grid">
+    <div class="layout-card"><div><h3>Susunan baris</h3><p>Cocok untuk penjelasan guru, tugas mandiri, dan ujian. Interaksi antarpeserta didik lebih terbatas.</p></div><button class="btn primary" onclick="setLayout('baris')">Terapkan susunan baris</button></div>
+    <div class="layout-card"><div><h3>Susunan kelompok</h3><p>Cocok untuk diskusi dan kerja sama. Atur arah duduk agar peserta didik tetap dapat melihat papan tulis.</p></div><button class="btn primary" onclick="setLayout('kelompok')">Terapkan susunan kelompok</button></div>
+    <div class="layout-card"><div><h3>Susunan huruf U</h3><p>Cocok untuk diskusi kelas dan presentasi. Membutuhkan ruang yang cukup luas.</p></div><button class="btn primary" onclick="setLayout('u')">Terapkan susunan huruf U</button></div>
+  </div>
+</section>
+
+<section id="audit" class="panel">
+  <h2>Lembar audit ruang kelas</h2>
+  <p class="muted lead">Centang “Ya” jika kondisi sudah terpenuhi. Hasil dihitung otomatis dari delapan indikator.</p>
+  <div id="auditList"></div>
+  <div class="result">
+    <div class="muted">Hasil audit</div>
+    <div class="score"><span id="score">0</span>/8</div>
+    <div id="feedback" class="muted">Belum ada indikator yang dicentang.</div>
+    <div class="controls no-print">
+      <button class="btn light" onclick="resetAudit()">Reset audit</button>
+      <button class="btn light" onclick="window.print()">Cetak hasil</button>
+    </div>
+  </div>
+</section>
+
+<section id="panduan" class="panel">
+  <h2>Petunjuk penggunaan</h2>
+  <ol class="steps">
+    <li><b>Ukur:</b> ukur ruang kelas serta posisi pintu, jendela, papan tulis, dan perabot tetap.</li>
+    <li><b>Audit:</b> isi lembar audit untuk mengetahui kondisi ruang kelas saat ini.</li>
+    <li><b>Coba:</b> pilih kegiatan belajar, lalu tambahkan atau pindahkan perabot pada denah.</li>
+    <li><b>Nilai:</b> periksa keterlihatan papan tulis, keterjangkauan guru, jalur lalu lintas, dan kesesuaian kegiatan.</li>
+    <li><b>Pilih dan terapkan:</b> pilih susunan yang paling sesuai, lalu atur perabot di kelas.</li>
+    <li><b>Evaluasi:</b> isi kembali lembar audit dan catat tanggapan guru serta peserta didik.</li>
+  </ol>
+  <div class="note"><b>Catatan:</b> Denah digital ini merupakan prototipe simulasi. Ukuran perabot dan posisi fitur ruang bersifat ilustratif, sehingga perlu disesuaikan dengan hasil pengukuran kelas sebenarnya.</div>
+</section>
+</main>
+
+<footer>Kelas Tertata, media simulasi penataan ruang kelas sekolah dasar</footer>
+<script src="script.js"></script>
+</body>
+</html>
